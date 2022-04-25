@@ -1,0 +1,88 @@
+<%- include("partials/headers") %>
+
+    <style>
+        #content {
+            margin-top: 60px;
+            min-height: inherit;
+            width: 100%;
+            padding: 1vh;
+            overflow: hidden;
+        }
+
+        /* #pin{
+            display: flex;
+        } */
+
+        #pin>a{
+            /* display: inline-flex; */
+            text-decoration: none;
+        }
+
+        .card {
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-left: 15px;
+            height: 430px;
+            width: 15.5%;
+            border-radius: 22px;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        .card:nth-child(1) {
+            margin-left: 10px;
+        }
+
+        .img {
+            overflow: hidden;
+            border-radius: 22px;
+            height: 370px;
+            width: 100%;
+        }
+
+        .img>img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .title {
+            padding: 10px;
+        }
+
+        .title>h6 {
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+
+    <div id="content">
+
+        <h3>My saves</h3>
+        <div id="pin">
+            <% if(lu.saves.length> 0){%>
+                <%lu.saves.forEach(function(dets){%>
+                    <a href="/pindiv/<%=dets._id%>">
+                        <div class="card">
+                            <div class="img">
+                                <img src="/upload/<%=dets.pinimage%>">
+                            </div>
+                            <div class="title">
+                                <h6>
+                                    <%=dets.mainhead%>
+                                </h6>
+                            </div>
+                        </div>
+                    </a>
+                    <%})%>
+                        <%} else{%>
+                            no
+                            <%}%>
+        </div>
+    </div>
+
+    <%- include("partials/footer") %>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register here</title>
+</head>
+<style>
+    *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(236, 234, 234);
+}
+
+h1{
+    color: #eb3773;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
+
+.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 1200px;
+}
+
+.part1{
+  padding: 25px;
+  height: 100%;
+  width: 39.5%;
+}
+
+.part1>form{
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.116);
+}
+
+.part1>form>input{
+  padding: 15px 50px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 0.1px solid rgba(128, 128, 128, 0.486);
+  outline: none;
+  font-size: 20px;
+  text-align: left;
+}
+
+.part1>form>#sub{
+  padding: 15px 136px;
+  background-color: #ec668e ;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+</style>
+<body>
+    <div class="main">
+
+        <div class="box">    
+          <div class="part1">
+              <h1>Register Here</h1>
+            <form action="/register" method="post">
+              <input type="text" name="name" placeholder="Full Name">
+              <br>
+              <input type="text" name="username" placeholder="Username">
+              <br>
+              <input type="date" name="dob">
+              <br>
+              <input type="password" name="password" placeholder="New password">
+              <br>
+              <input type="email" name="email" placeholder="email">
+              <input id="sub" type="submit" value="Register">
+            </form>  
+          </div>
+        </div>
+      </div>    
+</body>
+</html>

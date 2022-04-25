@@ -1,0 +1,414 @@
+<%- include("partials/headers") %>
+
+    <style>
+        #content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding: 2vh;
+            min-height: inherit;
+            width: 100%;
+            background-color: rgb(233, 233, 233);
+        }
+
+        #left {
+            padding: 2vh;
+            min-height: inherit;
+            width: 20%;
+        }
+
+        #left>a {
+            display: inline-block;
+            padding: 15px 10px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+        }
+
+        #right {
+            padding: 2vh 4vh;
+            min-height: inherit;
+            width: 80%;
+        }
+
+        #pindiv {
+            overflow: hidden;
+            padding: 35px 45px;
+            height: 90%;
+            width: 80%;
+            border-radius: 35px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #pindiv>form {
+            height: 100%;
+            width: 100%;
+        }
+
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>#more {
+            padding: 5px 10px;
+            font-size: 25px;
+            color: rgb(104, 103, 103);
+            border-radius: 50px;
+            background-color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        #nav>#more:hover {
+            background-color: rgb(233, 233, 233);
+            color: black;
+        }
+
+        #nav>#post {
+            padding: 10px 20px;
+            color: white;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 5px;
+            background-color: #f02d4d;
+            text-decoration: none;
+        }
+
+        #info {
+            display: flex;
+            margin-top: 25px;
+            height: 90%;
+            width: 100%;
+        }
+
+        #lft {
+            overflow: hidden;
+            position: relative;
+            width: 45%;
+            border-radius: 20px;
+            background-color: rgb(233, 233, 233);
+        }
+
+        #lft>p {
+            text-align: center;
+            position: absolute;
+            bottom: 35%;
+            left: 25%;
+        }
+
+        #lft>img {
+            display: none;
+            height: 50%;
+            object-fit: cover;
+            outline: none;
+            border: none;
+            width: 100%;
+        }
+
+        #lft>label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: inherit;
+            font-size: 40px;
+            height: 93%;
+            width: 90%;
+            color: rgba(128, 128, 128, 0.733);
+            border: 1px dashed rgba(122, 122, 122, 0.671);
+            border-radius: 15px;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        #lft>label>i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #rgt {
+            position: relative;
+            padding: 40px 30px;
+            height: 100%;
+            width: 55%;
+        }
+
+        #mainhead {
+            height: 80px;
+            width: 100%;
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid rgba(80, 80, 80, 0.438);
+            background-color: transparent;
+            font-size: 35px;
+            font-weight: bolder;
+        }
+
+        #mhmsg {
+            display: none;
+            font-size: 10px;
+        }
+
+        #mainhead:focus {
+            border-bottom: 2px solid blue;
+        }
+
+        #name {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            height: 50px;
+            width: 55%;
+        }
+
+        #name>h4 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        #fdp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            height: 50px;
+            width: 50px;
+            font-weight: bolder;
+            font-size: 20px;
+            border-radius: 50%;
+            background-color: rgb(233, 233, 233);
+        }
+
+        #conthead {
+            margin-top: 20px;
+            height: 40px;
+            width: 100%;
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid rgba(80, 80, 80, 0.438);
+            background-color: transparent;
+            font-size: 20px;
+        }
+
+        #contmsg {
+            display: none;
+            font-size: 10px;
+        }
+
+        /* #conthead:focus {
+            border-bottom: 2px solid blue;
+        } */
+
+        .downlink {
+            position: absolute;
+            bottom: 0;
+        }
+
+        #explain {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background-color: #E9E9E9;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .addtext>input {
+            font-size: 17px !important;
+        }
+
+        .addtext {
+            display: none;
+        }
+
+
+        #altinp {
+            margin-top: 20px;
+            height: 40px;
+            width: 100%;
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid rgba(80, 80, 80, 0.438);
+            background-color: transparent;
+            font-size: 20px;
+        }
+
+        #altmsg {
+            display: none;
+            font-size: 10px;
+        }
+    </style>
+
+    <div id="content">
+
+        <div id="left">
+            <a href="#"><i class="ri-add-line"></i></a>
+        </div>
+
+        <div id="right">
+            <h1>Create a pin</h1>
+            <br>
+            <div id="pindiv">
+                <form action="/createpost" method="post" enctype="multipart/form-data">
+                    <div id="nav">
+                        <a id="more" href="#"><i class="ri-more-fill"></i></a>
+                        <input id="post" type="submit" value="post">
+                    </div>
+
+                    <div id="info">
+                        <div id="lft">
+                            <img id="pic" src="#">
+                            <input name="pinimage" type="file" id="img" hidden>
+                            <label id="fr" for="img"><i class="ri-upload-cloud-fill"></i></label>
+                            <p id="labmsg">Drag and drop or click to <br> upload</p>
+                        </div>
+                        <div id="rgt">
+
+                            <div id="title">
+                                <input required name="mainhead" id="mainhead" type="text" placeholder="Add your title">
+                                <p id="mhmsg">Your first 40 characters are what usually show up in feeds</p>
+                            </div>
+
+                            <div id="name">
+                                <div id="fdp">
+                                    <%=val.name.charAt(0).toUpperCase()%>
+                                </div>
+                                <h4>
+                                    <%= val.name %>
+                                </h4>
+                            </div>
+
+                            <div id="title">
+                                <input required name="title" id="conthead" type="text" placeholder="Add your title">
+                                <p id="contmsg">People will usually see the first 50 characters on your pin</p>
+                            </div>
+                            <div id="addtext">
+
+                                <div id="explain">Add alt text</div>
+                                <div id="title" class="addtext">
+                                    <input name="alttext" id="altinp" type="text"
+                                        placeholder="Explain what people see in your pin ">
+                                    <p id="altmsg">This text will be read aloud by screen readers</p>
+                                </div>
+                            </div>
+
+                            <div class="downlink" id="title">
+                                <input required name="destlink" id="conthead" type="text"
+                                    placeholder="Add a destination link ">
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        var mainhead = document.querySelector("#mainhead");
+        var mhmsg = document.querySelector("#mhmsg");
+        var conthead = document.querySelector("#conthead");
+        var contmsg = document.querySelector("#contmsg");
+        const addText = document.querySelector("#explain")
+        const addContent = document.querySelector(".addtext")
+        var altinp = document.querySelector("#altinp");
+        var altmsg = document.querySelector("#altmsg");
+        var form = document.querySelector('#form');
+        var image = document.querySelector('#img')
+        var label = document.querySelector('#fr')
+        var p = document.querySelector('#labmsg')
+        var pic = document.querySelector('#pic')
+
+
+        // mainhead.addEventListener("input", function(dets){
+        //     // console.log(dets.data);
+        //     if(dets.data){
+        //      mhmsg.style.display = "initial";
+        //     }else{
+            //         mhmsg.style.display = "none";
+        //     }
+        // });
+
+        mainhead.addEventListener('focus', function (val) {
+            val.target.style.borderBottom = '2px solid blue';
+            mhmsg.style.display = 'initial'
+        }, true)
+
+        mainhead.addEventListener('blur', (event) => {
+            event.target.style.borderBottom = '1px solid rgba(80, 80, 80, 0.438)';
+            mhmsg.style.display = 'none'
+        }, true);
+
+        conthead.addEventListener('focus', function (val) {
+            val.target.style.borderBottom = '2px solid blue';
+            contmsg.style.display = 'initial'
+        }, true)
+
+        conthead.addEventListener('blur', (event) => {
+            event.target.style.borderBottom = '1px solid rgba(80, 80, 80, 0.438)';
+            contmsg.style.display = 'none'
+        }, true);
+
+        addText.addEventListener('click', function () {
+            addText.style.display = 'none'
+            addContent.style.display = 'initial'
+        })
+
+        altinp.addEventListener('focus', function (val) {
+            val.target.style.borderBottom = '2px solid blue';
+            altmsg.style.display = 'initial'
+        }, true)
+
+        altinp.addEventListener('blur', (event) => {
+            event.target.style.borderBottom = '1px solid rgba(80, 80, 80, 0.438)';
+            altmsg.style.display = 'none'
+        }, true);
+    
+
+image.addEventListener('change', (e) => {
+    readURL(image)
+})
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.addEventListener('load', (e) => {
+            pic.src = e.target.result
+        })
+
+        // reader.onload = function (e) {
+        //     $('#blah').attr('src', e.target.result);
+        // }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+fr.addEventListener('click', function(val){
+    pic.style.display = 'initial';
+    fr.style.display = 'none';
+    p.style.display = 'none';
+})
+
+
+       
+
+    </script>
+
+
+    <%- include("partials/footer") %>

@@ -1,0 +1,358 @@
+<%- include("partials/headers") %>
+
+    <style>
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            min-height: inherit;
+            width: 100%;
+            padding: 1vh;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #maindiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            height: 690px;
+            width: 100%;
+        }
+
+        #mainpin {
+            display: flex;
+            height: 100%;
+            width: 70%;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.212);
+        }
+
+
+        #lft {
+            height: 100%;
+            width: 50%;
+        }
+
+        #lft>img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        #rgt {
+            padding: 0 25px;
+            height: 100%;
+            width: 50%;
+        }
+
+        #nav {
+            margin-top: 15px;
+            padding: 0 5px;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            width: 100%;
+            /* background-color: rgb(203, 170, 233); */
+        }
+
+        #nav>a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        #mysave {
+            margin-left: 150px;
+            font-size: 17px !important;
+        }
+
+        #save {
+            background-color: red;
+            color: white !important;
+            padding: 10px !important;
+        }
+
+        #destlink {
+            color: black;
+        }
+
+        #head {
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #authordiv {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            width: 100%;
+        }
+
+        #authordiv>a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 50px;
+            background-color: rgb(236, 236, 236);
+            font-weight: bold;
+        }
+
+        #dp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background-color: rgb(186, 248, 248);
+        }
+
+        #dp>h2 {
+            font-weight: bold;
+        }
+
+        #one {
+            display: flex;
+            align-items: center;
+        }
+
+        #one>#txt>h6 {
+            margin-bottom: -5px;
+            font-size: 20px;
+        }
+
+        #rgt>h3 {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #showcomment {
+            padding: 10px;
+            min-height: 10vh;
+            width: 100%;
+        }
+
+        #udp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: rgb(228, 228, 228);
+        }
+
+        #txtarea {
+            line-height: 17px;
+            padding: 10px;
+            margin-left: 10px;
+            height: 70px;
+            width: 70%;
+            border-radius: 20px;
+            border: 1px solid rgba(128, 128, 128, 0.452);
+        }
+
+        #cmtbox {
+            display: flex;
+        }
+
+        #likecmt {
+            display: flex;
+            align-items: center;
+            margin-left: 65px;
+        }
+
+        #likecmt>a {
+            text-decoration: none;
+            color: black;
+            margin-top: 5px;
+            font-size: 17px;
+            margin-right: 10px;
+        }
+
+        #postcmt {
+            display: flex;
+            padding: 10px;
+            height: 300px;
+            width: 100%;
+        }
+
+        #pdp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: rgb(228, 228, 228);
+        }
+
+        form {
+            margin-top: 2px;
+            margin-left: 10px;
+        }
+
+        #cmtarea {
+            outline: none;
+            border: 1px solid rgba(128, 128, 128, 0.356);
+            border-radius: 15px;
+            padding: 14px 70px;
+        }
+
+        #sub {
+            padding: 7px;
+            background-color: red;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            border: none;
+            margin-left: 10px;
+        }
+    </style>
+
+    <div id="content">
+
+        <!-- <%=  true ? kuch.developer.followers.find(i => lu._id.toString() === i.toString()) : false%> -->
+       
+
+        <div id="maindiv">
+
+            <div id="mainpin">
+
+                <div id="lft">
+                    <img src="../upload/<%=kuch.pinimage%>" alt="err">
+                </div>
+
+                <div id="rgt">
+                    <div id="nav">
+                        <a href="#"><i class="ri-more-fill"></i></a>
+                        <a href="#"><i class="ri-upload-2-fill"></i></a>
+                        <a id="mysave" href="/user/saves/<%=lu._id%>">My saves</a>
+                        <a id="save" href="/post/save/<%=kuch._id%>">
+                            <% if (lu.saves.find(i => kuch._id.toString() === i.toString()) ) { %>
+                                Unsave
+                            <%} else { %>
+                                Save
+                            <%}%>
+
+                        </a>
+                    </div>
+
+                    <a id="destlink" href="#">
+                        <%=kuch.destlink%>
+                    </a>
+
+                    <h2 id="head">
+                        <%=kuch.mainhead%>
+                    </h2>
+                    <p>
+                        <%=kuch.title%>
+                    </p>
+
+                    <div id="authordiv">
+                        <div id="one">
+                            <div id="dp">
+                                <h2>
+                                    <%=kuch.developer.name.charAt(0).toUpperCase()%>
+                                </h2>
+                            </div>
+                            <div id="txt">
+                                <h6>
+                                    <%=kuch.developer.name%>
+                                </h6>
+                                <small>
+                                    <%= kuch.developer.followers.length %> follower
+                                </small>
+                            </div>
+                        </div>
+                        <a id="followbtn" href="/post/follow/<%=kuch._id%>">
+                            
+                            <% if (kuch.developer.followers.find(i => lu._id.toString() === i.toString()) ) { %>
+                                Unfollow
+                            <%} else { %>
+                                Follow
+                            <%}%>
+
+                        </a>
+                    </div>
+
+                    <h3>Comments</h3>
+
+                    <div id="showcomment">
+                        <% if(kuch.cmt.length>0){%>
+                            <%kuch.cmt.forEach(function(dets){%>
+                                <div id="cmtbox">
+                                    <div id="udp">
+                                        <%=lu.name.charAt(0).toUpperCase()%>
+                                    </div>
+                                    <div id="txtarea">
+                                        <strong>Name</strong>
+                                        <p>
+                                            <%=dets.content%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="likecmt">
+                                    <a href=""><i class="ri-heart-3-line"></i><small>0</small></a>
+                                    <a href=""><i class="ri-chat-3-line"></i></a>
+                                    <a href=""><i class="ri-more-fill"></i></a>
+                                </div>
+                                <%})%>
+                                    <%} else{%>
+                                        <p>No comments yet</p>
+                                        <%}%>
+                    </div>
+
+                    <div id="postcmt">
+                        <div id="pdp">
+                            <%=lu.name.charAt(0).toUpperCase()%>
+                        </div>
+                        <form action="/comment/<%=kuch._id%>" method="post">
+                            <input id="cmtarea" name="comment" type="text" placeholder="Add a comment">
+                            <input id="sub" type="submit" value="Done">
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <script>
+        var followbtn = document.querySelector('#followbtn');
+        // var flag = 0;
+
+        followbtn.addEventListener('click', function(val){
+            axios.get(`/post/follow/${kuch._id}`)
+            if(follow){
+                followbtn.innerHTML = 'Follow'
+                flag = 1;
+            }
+            else{
+                followbtn.innerHTML = 'Unfollow'
+                flag = 0;
+            }
+        })
+
+        
+    </script> -->
+
+    <%- include("partials/footer") %>
